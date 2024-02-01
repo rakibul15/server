@@ -1,3 +1,5 @@
+import userRouter from "./routes/user.route";
+
 require('dotenv').config();
 import express, { NextFunction, Request, Response } from "express"
 export const app=express();
@@ -18,6 +20,8 @@ app.use(cookieParser());
 app.use(cors({
     origin:process.env.ORIGIN
 }))
+// routes
+app.use("/api/v1",userRouter)
 
 // Testing  Api
 app.get("/test",(req:Request,res:Response, next:NextFunction)=>{
