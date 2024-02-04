@@ -84,7 +84,9 @@ userSchema.methods.SignAccessToken=function(){
 
 // Sign Refresh Token
 userSchema.methods.SignRefreshToken=function(){
-    return jwt.sign({id:this._id},process.env.REFRESH_TOKEN || '')
+    return jwt.sign({id:this._id},process.env.REFRESH_TOKEN || '',{
+        expiresIn:"3d",
+    })
 }
 
 // compare password
